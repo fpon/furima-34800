@@ -6,7 +6,6 @@
 | ------------------ | ---------- | -------------------------- |
 | nickname           | string     | null: false                |
 | email              | string     | null: false,  unique: true |
-| password           | string     | null: false                |
 | encrypted_password | string     | null: false                |
 | first_name         | string     | null: false                |
 | last_name          | string     | null: false                |
@@ -25,13 +24,13 @@
 
 | Columns     | Type       | Options           |
 | ----------- | ---------- | ----------------- |
-| name        | text       | null: false       |
-| introduce   | string     | null: false       |
+| name        | string     | null: false       |
+| introduce   | text       | null: false       |
 | category_id | integer    | null: false       |
 | state_id    | integer    | null: false       |
 | shipping_id | integer    | null: false       |
 | region_id   | integer    | null: false       |
-| days_id     | integer    | null: false       |
+| day_id      | integer    | null: false       |
 | price       | integer    | null: false       |
 | user        | references | foreign_key: true |
 
@@ -46,11 +45,12 @@
 | Columns       | Type       | Options           |
 | ------------- | ---------- | ----------------- |
 | post          | string     | null: false       |
-| prefecture_id | integer    | null: false       |
+| region_id     | integer    | null: false       |
 | city          | string     | null: false       |
 | house_number  | string     | null: false       |
+| building_name | string     |                   |
 | phone_number  | string     | null: false       |
-| user          | references | foreign_key: true |
+| purchase      | references | foreign_key: true |
 
 ### Association
 
