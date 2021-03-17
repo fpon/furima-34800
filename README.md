@@ -2,24 +2,30 @@
 
 ## usersテーブル
 
-| Columns  | Type   | Options     |
-| -------- | ------ | ----------- |
-| nickname | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
+| Columns         | Type       | Options     |
+| --------------- | ---------- | ----------- |
+| nickname        | string     | null: false |
+| email           | string     | null: false |
+| password        | string     | null: false |
+| first_name      | string     | null: false |
+| last_name       | string     | null: false |
+| first_name_kana | string     | null: false |
+| last_name_kana  | string     | null: false |
+| birthday        | date       | null: false |
 
 ### Association
 
 - has_many :items
-- has_one :profile
 - has_one :addresses
-- has_one :credit
+- has_one :purchase
+
 
 
 ## itemsテーブル
 
 | Columns   | Type       | Options           |
 | --------- | ---------- | ----------------- |
+| image     |            |                   |
 | name      | string     | null: false       |
 | introduce | string     | null: false       |
 | category  | string     | null: false       |
@@ -34,34 +40,6 @@
 
 - belongs_to :user
 - has_one :images
-
-
-## imagesテーブル
-
-| Columns | Type       | Options           |
-| ------- | ---------- | ----------------- |
-| image   | string     | null: false       |
-| item_id | references | foreign_key: true |
-
-### Association
-
-- belongs_to :item
-
-
-## profileテーブル
-
-| Columns         | Type       | Options           |
-| --------------- | ---------- | ----------------- |
-| first_name      | string     | null: false       |
-| last_name       | string     | null: false       |
-| first_name_kana | string     | null: false       |
-| last_name_kana  | string     | null: false       |
-| birthday        | date       | null: false       |
-| user_id         | references | foreign_key: true |
-
-### Association
-
-- belongs_to :user
 
 
 ## addressesテーブル
@@ -80,17 +58,14 @@
 - belongs_to :user
 
 
-## creditテーブル
+## purchaseテーブル
 
-| Columns     | Type       | Options           |
-| ----------- | ---------- | ----------------- |
-| price       | integer    | null: false       |
-| card_number | integer    | null: false       |
-| cvc         | integer    | null: false       |
-| exp_mouth   | integer    | null: false       |
-| exp_year    | integer    | null: false       |
-| user_id     | references | foreign_key: user |
+| Columns | Type       | Options           |
+| ------- | ---------- | ----------------- |
+| user_id | references | foreign_key: user |
+| item_id | references | foreign_key: user |
 
 ### Association
 
-- belongs_to user
+- belongs_to :user
+- belongs_to :item
