@@ -32,25 +32,25 @@ RSpec.describe Item, type: :model do
       end
 
       it 'カテゴリー情報がないと出品できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
 
       it '商品状態についての情報がないと出品できない' do
-        @item.state_id = '1'
+        @item.state_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('State must be other than 1')
       end
 
       it '配送料の負担についての情報がないと出品できない' do
-        @item.shipping_id = '1'
+        @item.shipping_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping must be other than 1')
       end
 
       it '発送元の地域についての情報がないと出品できない' do
-        @item.region_id = '1'
+        @item.region_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Region must be other than 1')
       end
@@ -62,20 +62,21 @@ RSpec.describe Item, type: :model do
       end
 
       it '販売価格が¥299以下だと出品できない' do
-        @item.price = '250'
+        @item.price = 250
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be greater than 300')
       end
 
       it '販売価格が¥10000000以上だと出品できない' do
-        @item.price = '100000000'
+        @item.price = 100_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be less than 9999999')
       end
 
-      it '販売価格はが角数字で入力されていない時出品できない' do
+      it '販売価格はが半角数字で入力されていない時出品できない' do
         @item.state_id = '１０００'
         @item.valid?
+        binding.pry
         expect(@item.errors.full_messages).to include('State is not a number')
       end
 
