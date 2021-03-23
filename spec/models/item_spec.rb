@@ -76,7 +76,6 @@ RSpec.describe Item, type: :model do
       it '販売価格はが半角数字で入力されていない時出品できない' do
         @item.state_id = '１０００'
         @item.valid?
-        binding.pry
         expect(@item.errors.full_messages).to include('State is not a number')
       end
 
