@@ -82,13 +82,13 @@ RSpec.describe Item, type: :model do
       it '商品価格が半角英数字混合では出品できない' do
         @item.state_id = 'aaaa'
         @item.valid?
-        expect(@item.errors.full_messages).to include("State is not a number")
+        expect(@item.errors.full_messages).to include('State is not a number')
       end
 
       it '商品価格が半角英字のみでは出品できない' do
         @item.state_id = '3000a'
         @item.valid?
-        expect(@item.errors.full_messages).to include("State is not a number")
+        expect(@item.errors.full_messages).to include('State is not a number')
       end
 
       it 'ユーザーが紐づいていなければ出品できない' do
