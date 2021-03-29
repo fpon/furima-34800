@@ -2,14 +2,12 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user! 
   before_action :item_find, only: [:index, :create]
   before_action :user_confirmation
-  before_action :item_present?
 
   def index
     @item_purchase = ItemPurchase.new
   end
 
   def create
-    #binding.pry
     @item_purchase = ItemPurchase.new(purchase_params)
     if @item_purchase.valid?
       pay_jp
@@ -21,6 +19,7 @@ class PurchasesController < ApplicationController
   end
 
   private
+  
   def item_find
     @item = Item.find(params[:item_id])
   end
@@ -30,13 +29,7 @@ class PurchasesController < ApplicationController
   end
   
   def user_confirmation
-    if @item.user_id == current_user.id
-      redirect_to root_path
-    end
-  end
-
-  def item_present?
-    if @item.purchase.present?
+    if @item.user_id == current_user.id || @item.purchase.present?
       redirect_to root_path
     end
   end

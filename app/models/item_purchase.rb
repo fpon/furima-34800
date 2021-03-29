@@ -8,6 +8,8 @@ class ItemPurchase
     validates :house_number
     validates :phone_number, length: { maximum: 11 }
     validates :token
+    validates :user_id
+    validates :item_id
   end
   
   validates :region_id, numericality: { other_than: 1 }
