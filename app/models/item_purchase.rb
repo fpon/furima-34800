@@ -1,12 +1,13 @@
 class ItemPurchase
   include ActiveModel::Model
-  attr_accessor :post, :region_id, :city, :house_number, :building_name, :phone_number, :purchase_id, :user_id, :item_id
+  attr_accessor :post, :region_id, :city, :house_number, :building_name, :phone_number, :purchase_id, :user_id, :item_id, :token
 
   with_options presence: true do
     validates :post
     validates :city
     validates :house_number
     validates :phone_number, length: { maximum: 11 }
+    validates :token
   end
   
   validates :region_id, numericality: { other_than: 1 }
