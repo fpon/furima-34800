@@ -10,7 +10,7 @@ class Item < ApplicationRecord
     validates :name
     validates :introduce
     validates :price
-    validates :image
+    validates :images
   end
 
   with_options numericality: { other_than: 1 } do
@@ -25,6 +25,6 @@ class Item < ApplicationRecord
   validates :price, format: { with: /\A[0-9]+\z/ }
 
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
   has_one :purchase
 end

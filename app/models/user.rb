@@ -21,6 +21,6 @@ class User < ApplicationRecord
   validates :first_name_kana, format: { with: KANA_VALIDATES }
   validates :last_name_kana, format: { with: KANA_VALIDATES }
 
-  has_many :itesm
+  has_many :items
   has_many :purchases
 end
