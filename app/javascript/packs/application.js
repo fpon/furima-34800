@@ -17,3 +17,4 @@ require("channels")
 
 require("../price")
 require("../card")
+require("../preview")
