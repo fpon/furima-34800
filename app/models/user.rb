@@ -15,11 +15,11 @@ class User < ApplicationRecord
 
   NAME_VALIDATES = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
   KANA_VALIDATES = /\A[ァ-ヶー－]+\z/
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
-  validates :first_name, format: { with: NAME_VALIDATES }
-  validates :last_name, format: { with: NAME_VALIDATES }
-  validates :first_name_kana, format: { with: KANA_VALIDATES }
-  validates :last_name_kana, format: { with: KANA_VALIDATES }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }, allow_blank: true
+  validates :first_name, format: { with: NAME_VALIDATES }, allow_blank: true
+  validates :last_name, format: { with: NAME_VALIDATES }, allow_blank: true
+  validates :first_name_kana, format: { with: KANA_VALIDATES }, allow_blank: true
+  validates :last_name_kana, format: { with: KANA_VALIDATES }, allow_blank: true
 
   has_many :items
   has_many :purchases
