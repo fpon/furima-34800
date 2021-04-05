@@ -34,25 +34,25 @@ RSpec.describe Item, type: :model do
       it 'カテゴリー情報がないと出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("カテゴリーは1以外の値にしてください")
+        expect(@item.errors.full_messages).to include("カテゴリーを選択してください")
       end
       
       it '商品状態についての情報がないと出品できない' do
         @item.state_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("商品の状態は1以外の値にしてください")
+        expect(@item.errors.full_messages).to include("商品の状態を選択してください")
       end
       
       it '配送料の負担についての情報がないと出品できない' do
         @item.shipping_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("配送料の負担は1以外の値にしてください")
+        expect(@item.errors.full_messages).to include("配送料の負担を選択してください")
       end
       
       it '発送元の地域についての情報がないと出品できない' do
         @item.region_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("発送元の地域は1以外の値にしてください")
+        expect(@item.errors.full_messages).to include("発送元の地域を選択してください")
       end
       
       it '販売価格についての情報がないと出品できない' do
@@ -88,7 +88,6 @@ RSpec.describe Item, type: :model do
       it '商品価格が半角英字のみでは出品できない' do
         @item.price = '3000a'
         @item.valid?
-        binding.pry
         expect(@item.errors.full_messages).to include("販売価格は数値で入力してください")
       end
       

@@ -78,7 +78,7 @@ RSpec.describe ItemPurchase, type: :model do
       it 'region_idが1の時、購入できない' do
         @purchase.region_id = 1
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("都道府県は1以外の値にしてください")
+        expect(@purchase.errors.full_messages).to include("都道府県を選択してください")
       end
       
       it 'house_numberが空の時、購入できない' do

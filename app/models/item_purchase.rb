@@ -12,7 +12,7 @@ class ItemPurchase
     validates :item_id
   end
   
-  validates :region_id, numericality: { other_than: 1 }
+  validates :region_id, numericality: { other_than: 1 , message: "を選択してください" }
   validates :post, format: { with: /\A\d{3}[-]\d{4}\z/ }
   validates :phone_number, format: { with: /\A[0-9]+\z/ }
 
