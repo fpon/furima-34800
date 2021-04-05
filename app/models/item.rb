@@ -13,7 +13,7 @@ class Item < ApplicationRecord
     validates :images
   end
 
-  with_options numericality: { other_than: 1 } do
+  with_options numericality: { other_than: 1 , message: "を選択してください" } do
     validates :category_id
     validates :state_id
     validates :shipping_id
@@ -21,8 +21,8 @@ class Item < ApplicationRecord
     validates :day_id
   end
 
-  validates :price, numericality: { greater_than: 299, less_than: 10_000_000 }
-  validates :price, format: { with: /\A[0-9]+\z/ }
+  validates :price, numericality: { greater_than: 299, less_than: 10_000_000 }, allow_blank: true
+  validates :price, format: { with: /\A[0-9]+\z/ }, allow_blank: true
 
   belongs_to :user
   has_many_attached :images

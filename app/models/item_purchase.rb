@@ -12,9 +12,9 @@ class ItemPurchase
     validates :item_id
   end
   
-  validates :region_id, numericality: { other_than: 1 }
-  validates :post, format: { with: /\A\d{3}[-]\d{4}\z/ }
-  validates :phone_number, format: { with: /\A[0-9]+\z/ }
+  validates :region_id, numericality: { other_than: 1 , message: "を選択してください" }
+  validates :post, format: { with: /\A\d{3}[-]\d{4}\z/ }, allow_blank: true
+  validates :phone_number, format: { with: /\A[0-9]+\z/ }, allow_blank: true
 
   def save
     purchase = Purchase.create(user_id: user_id, item_id: item_id)
