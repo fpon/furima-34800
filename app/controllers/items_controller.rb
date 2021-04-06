@@ -8,13 +8,15 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    @item = ItemsTag.new
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
+    @item = ItemsTag.new(item_params)
+    binding.pry
+    if @item.valid?
+      @item.save
+      return redirect_to root_path
     else
       render :new
     end
@@ -53,7 +55,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :introduce, :category_id, :state_id, :shipping_id, :region_id, :day_id, :price, images: []).merge(user_id: current_user.id)
+    params.require(:items_tag).permit(:tag_name, :name, :introduce, :category_id, :state_id, :shipping_id, :region_id, :day_id, :price, images: []).merge(user_id: current_user.id)
   end
 
   def item_present?

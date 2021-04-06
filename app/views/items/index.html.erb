@@ -150,6 +150,15 @@
                   <span class='star-count'>0</span>
                 </div>
               </div>
+              <%#ここからタグ付け%>
+              <ul class="tag">
+                <li class="tag-list">
+                   <% item.tags.each do |tag| %>
+                     <%= tag.tag_name%>
+                   <% end %>
+                </li>
+              </ul>
+              <%#ここまでタグ付け%>  
             </div>
             <% end %>
           </li>
