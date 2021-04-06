@@ -4,7 +4,6 @@ class ItemsTag
   attr_accessor :tag_name, :name, :introduce, :price, :images, :category_id, :state_id, :shipping_id, :region_id, :day_id, :user_id
 
   with_options presence: true do
-    validates :tag_name
     validates :name
     validates :introduce
     validates :price
