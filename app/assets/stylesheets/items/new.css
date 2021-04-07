@@ -175,6 +175,12 @@
   flex-direction: column;
 }
 
+.child{
+  border-bottom:#666 1px solid;
+  margin: 10px 0;
+  padding-left: 11px;
+}
+
 
 /* /タグ*/
 
