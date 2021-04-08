@@ -25,10 +25,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @items_tag = ItemsTag.new(item: @item)
   end
 
   def update
-    if @item.update(item_params)
+    @items_tag = ItemsTag.new(item_params, item: @item)
+    if @items_tag.valid?
+      @items_tag.save
       redirect_to item_path(@item.id)
     else
       render :edit
