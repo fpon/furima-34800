@@ -29,9 +29,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @items_tag = ItemsTag.new(item_params, item: @item)
+    @items_tag = ItemsTag.new(item_params_update)
     if @items_tag.valid?
-      @items_tag.save
+      @items_tag.update
       redirect_to item_path(@item.id)
     else
       render :edit
@@ -65,6 +65,10 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:items_tag).permit(:tag_name, :name, :introduce, :category_id, :state_id, :shipping_id, :region_id, :day_id, :price, images: []).merge(user_id: current_user.id)
+  end
+  
+  def item_params_update
+    params.require(:item).permit(:tag_name, :name, :introduce, :category_id, :state_id, :shipping_id, :region_id, :day_id, :price, images: []).merge(user_id: current_user.id)
   end
 
   def item_present?
