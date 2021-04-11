@@ -163,6 +163,27 @@
 
 /* /販売価格 */
 
+/* /タグ*/
+.tag-field{
+  margin-top: 30px;
+}
+
+.input-tag{
+  padding: 0 0 1vh 0;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.child{
+  border-bottom:#666 1px solid;
+  margin: 10px 0;
+  padding-left: 11px;
+}
+
+
+/* /タグ*/
+
 /* 注意書き */
 .caution {
   padding: 5vh 0;
