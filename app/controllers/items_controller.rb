@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @items_tag = ItemsTag.new(item_params_update)
+    @items_tag = ItemsTag.new(item_params_update,item: @item)
     if @items_tag.valid?
       @items_tag.update
       redirect_to item_path(@item.id)
